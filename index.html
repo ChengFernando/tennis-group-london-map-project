@@ -1,3 +1,209 @@
-<html>
-  <h1>hello World!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tennis Players Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+    .player-popup {
+      text-align: center;
+      min-width: 200px;
+    }
+    .player-popup img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 8px;
+    }
+    .player-popup h3 {
+      margin: 0 0 4px 0;
+      font-size: 16px;
+    }
+    .player-popup .court {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .player-popup .level {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .level-beginner { background: #d4f5d4; color: #2d6a2d; }
+    .level-intermediate { background: #fff3cd; color: #856404; }
+    .level-advanced { background: #cce5ff; color: #004085; }
+    .player-popup .availability {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .whatsapp-btn {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .whatsapp-btn:hover {
+      background: #128C7E;
+    }
+    .avatar-marker {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    // Player data
+    const players = [
+      {
+        id: '1',
+        name: 'James Wilson',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+        whatsapp: '447123456789',
+        court: 'Hyde Park Tennis Centre',
+        coords: [51.5074, -0.1657],
+        level: 'advanced',
+        availability: 'Weekends, 9am-12pm'
+      },
+      {
+        id: '2',
+        name: 'Sarah Chen',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
+        whatsapp: '447234567890',
+        court: "Regent's Park Tennis Centre",
+        coords: [51.5273, -0.1534],
+        level: 'intermediate',
+        availability: 'Tue & Thu evenings'
+      },
+      {
+        id: '3',
+        name: 'Marcus Thompson',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
+        whatsapp: '447345678901',
+        court: "Queen's Club",
+        coords: [51.4875, -0.2134],
+        level: 'advanced',
+        availability: 'Weekday mornings'
+      },
+      {
+        id: '4',
+        name: 'Emma Rodriguez',
+        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+        whatsapp: '447456789012',
+        court: 'Islington Tennis Centre',
+        coords: [51.5504, -0.1070],
+        level: 'beginner',
+        availability: 'Sat & Sun afternoons'
+      },
+      {
+        id: '5',
+        name: 'David Kim',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+        whatsapp: '447567890123',
+        court: 'Battersea Park Tennis Courts',
+        coords: [51.4795, -0.1564],
+        level: 'intermediate',
+        availability: 'Flexible schedule'
+      },
+      {
+        id: '6',
+        name: 'Olivia Patel',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face',
+        whatsapp: '447678901234',
+        court: 'Wimbledon Park Tennis Courts',
+        coords: [51.4340, -0.1996],
+        level: 'advanced',
+        availability: 'Wed & Fri evenings'
+      },
+      {
+        id: '7',
+        name: 'Alex Murphy',
+        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face',
+        whatsapp: '447789012345',
+        court: 'Victoria Park Tennis Courts',
+        coords: [51.5364, -0.0390],
+        level: 'beginner',
+        availability: 'Sunday mornings'
+      },
+      {
+        id: '8',
+        name: 'Nina Okonkwo',
+        avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face',
+        whatsapp: '447890123456',
+        court: 'Greenwich Park Tennis Courts',
+        coords: [51.4769, 0.0014],
+        level: 'intermediate',
+        availability: 'Weekends only'
+      }
+    ];
+
+    // Initialize map centered on London
+    const map = L.map('map').setView([51.5074, -0.1276], 11);
+
+    // Add OpenStreetMap tiles (free, no API key needed)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add markers for each player
+    players.forEach(player => {
+      // Create custom avatar icon
+      const icon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div class="avatar-marker" style="background-image: url('${player.avatar}')"></div>`,
+        iconSize: [44, 44],
+        iconAnchor: [22, 22]
+      });
+
+      // Create popup content
+      const popupContent = `
+        <div class="player-popup">
+          <img src="${player.avatar}" alt="${player.name}">
+          <h3>${player.name}</h3>
+          <div class="court">📍 ${player.court}</div>
+          <div class="level level-${player.level}">${player.level}</div>
+          <div class="availability">🕐 ${player.availability}</div>
+          <a href="https://wa.me/${player.whatsapp}" target="_blank" class="whatsapp-btn">
+            💬 WhatsApp
+          </a>
+        </div>
+      `;
+
+      // Add marker to map
+      L.marker(player.coords, { icon })
+        .addTo(map)
+        .bindPopup(popupContent);
+    });
+  </script>
+</body>
 </html>
