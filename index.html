@@ -49,6 +49,7 @@
     }
     .level-beginner { background: #d4f5d4; color: #2d6a2d; }
     .level-intermediate { background: #fff3cd; color: #856404; }
+    .level-improver { background: #fff3cd; color: #856404; }    
     .level-advanced { background: #cce5ff; color: #004085; }
     .player-popup .availability {
       font-size: 12px;
@@ -108,70 +109,70 @@
         whatsapp: '447526540994',
         court: "Regent's Park Tennis Centre",
         coords: [51.52577874869013, -0.15371467172520364],
-        level: 'Advanced',
+        level: 'advanced',
         availability: '',
         moreInfo: ''
       },
       {
         id: '3',
-        name: 'Marcus Thompson',
-        whatsapp: '447345678901',
+        name: '子頤',
+        whatsapp: '447761848043',
         court: "Queen's Club",
-        coords: [51.4875, -0.2134],
-        level: 'advanced',
-        availability: 'Weekday mornings',
+        coords: [51.472346199126996, -0.12289799881983392],
+        level: 'improver',
+        availability: '',
         moreInfo: ''
       },
       {
         id: '4',
-        name: 'Emma Rodriguez',
+        name: 'Josephine',
         whatsapp: '447456789012',
-        court: 'Islington Tennis Centre',
-        coords: [51.5504, -0.1070],
-        level: 'beginner',
-        availability: 'Sat & Sun afternoons',
-        moreInfo: ''
-      },
-      {
-        id: '5',
-        name: 'David Kim',
-        whatsapp: '447567890123',
-        court: 'Battersea Park Tennis Courts',
-        coords: [51.4795, -0.1564],
-        level: 'intermediate',
-        availability: 'Flexible schedule',
-        moreInfo: ''
-      },
-      {
-        id: '6',
-        name: 'Olivia Patel',
-        whatsapp: '447678901234',
-        court: 'Wimbledon Park Tennis Courts',
-        coords: [51.4340, -0.1996],
-        level: 'advanced',
-        availability: 'Wed & Fri evenings',
-        moreInfo: ''
-      },
-      {
-        id: '7',
-        name: 'Alex Murphy',
-        whatsapp: '447789012345',
-        court: 'Victoria Park Tennis Courts',
-        coords: [51.5364, -0.0390],
-        level: 'beginner',
-        availability: 'Sunday mornings',
-        moreInfo: ''
-      },
-      {
-        id: '8',
-        name: 'Nina Okonkwo',
-        whatsapp: '447890123456',
-        court: 'Greenwich Park Tennis Courts',
-        coords: [51.4769, 0.0014],
-        level: 'intermediate',
-        availability: 'Weekends only',
-        moreInfo: ''
+        court: 'Sutton',
+        coords: [51.35972126104192, -0.19117216193619174],
+        level: 'improver',
+        availability: '',
+        moreInfo: '冬天希望能約室內場'
       }
+      // {
+      //   id: '5',
+      //   name: 'David Kim',
+      //   whatsapp: '447567890123',
+      //   court: 'Battersea Park Tennis Courts',
+      //   coords: [51.4795, -0.1564],
+      //   level: '',
+      //   availability: 'Flexible schedule',
+      //   moreInfo: ''
+      // },
+      // {
+      //   id: '6',
+      //   name: 'Olivia Patel',
+      //   whatsapp: '447678901234',
+      //   court: 'Wimbledon Park Tennis Courts',
+      //   coords: [51.4340, -0.1996],
+      //   level: 'advanced',
+      //   availability: 'Wed & Fri evenings',
+      //   moreInfo: ''
+      // },
+      // {
+      //   id: '7',
+      //   name: 'Alex Murphy',
+      //   whatsapp: '447789012345',
+      //   court: 'Victoria Park Tennis Courts',
+      //   coords: [51.5364, -0.0390],
+      //   level: 'beginner',
+      //   availability: 'Sunday mornings',
+      //   moreInfo: ''
+      // },
+      // {
+      //   id: '8',
+      //   name: 'Nina Okonkwo',
+      //   whatsapp: '447890123456',
+      //   court: 'Greenwich Park Tennis Courts',
+      //   coords: [51.4769, 0.0014],
+      //   level: '',
+      //   availability: 'Weekends only',
+      //   moreInfo: ''
+      // }
     ];
 
     // Initialize map centered on London
@@ -205,7 +206,7 @@
           <div class="court">📍 ${player.court}</div>
           <div class="level level-${player.level}">${player.level}</div>
           <div class="availability">🕐 ${player.availability}</div>
-          ${player.moreInfo ? `<div style="font-size:12px;color:#666;margin-bottom:8px;">${player.moreInfo}</div>` : ''}
+          ${player.moreInfo ? `<div style="font-size:12px;color:#666;margin-bottom:8px;">🔊 ${player.moreInfo}</div>` : ''}
           <a href="https://wa.me/${player.whatsapp}" target="_blank" class="whatsapp-btn">
             💬 WhatsApp
           </a>
