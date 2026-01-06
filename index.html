@@ -101,136 +101,55 @@
   <div id="map"></div>
 
   <script>
-    // Player data
-    const players = [
-      {
-        id: '1',
-        name: 'Fernando',
-        whatsapp: '447380130647',
-        court: 'New River Lesiure Centre',
-        coords: [51.60500771371354, -0.09923735582271752],
-        level: 'advanced',
-        availability: '周末 or 平日下班後',
-        moreInfo: '每周打 1-2 次'
-      },
-      {
-        id: '2',
-        name: 'Ryan',
-        whatsapp: '447526540994',
-        court: "Regent's Park Tennis Centre",
-        coords: [51.52577874869013, -0.15371467172520364],
-        level: 'advanced',
-        availability: '',
-        moreInfo: ''
-      },
-      {
-        id: '3',
-        name: '子頤',
-        whatsapp: '447761848043',
-        court: "Stockwell",
-        coords: [51.472346199126996, -0.12289799881983392],
-        level: 'improver',
-        availability: '',
-        moreInfo: ''
-      },
-      {
-        id: '4',
-        name: 'Josephine',
-        whatsapp: '447395678080',
-        court: 'Sutton',
-        coords: [51.35972126104192, -0.19117216193619174],
-        level: 'improver',
-        availability: '',
-        moreInfo: '冬天希望能約室內場'
-      }
-      // {
-      //   id: '5',
-      //   name: 'David Kim',
-      //   whatsapp: '447567890123',
-      //   court: 'Battersea Park Tennis Courts',
-      //   coords: [51.4795, -0.1564],
-      //   level: '',
-      //   availability: 'Flexible schedule',
-      //   moreInfo: ''
-      // },
-      // {
-      //   id: '6',
-      //   name: 'Olivia Patel',
-      //   whatsapp: '447678901234',
-      //   court: 'Wimbledon Park Tennis Courts',
-      //   coords: [51.4340, -0.1996],
-      //   level: 'advanced',
-      //   availability: 'Wed & Fri evenings',
-      //   moreInfo: ''
-      // },
-      // {
-      //   id: '7',
-      //   name: 'Alex Murphy',
-      //   whatsapp: '447789012345',
-      //   court: 'Victoria Park Tennis Courts',
-      //   coords: [51.5364, -0.0390],
-      //   level: 'beginner',
-      //   availability: 'Sunday mornings',
-      //   moreInfo: ''
-      // },
-      // {
-      //   id: '8',
-      //   name: 'Nina Okonkwo',
-      //   whatsapp: '447890123456',
-      //   court: 'Greenwich Park Tennis Courts',
-      //   coords: [51.4769, 0.0014],
-      //   level: '',
-      //   availability: 'Weekends only',
-      //   moreInfo: ''
-      // }
-    ];
+    // Fetch player data from external JSON file
+    fetch('players.json')
+      .then(response => response.json())
+      .then(players => {
+        // Initialize map centered on London
+        const map = L.map('map').setView([51.5074, -0.1276], 11);
 
-    // Initialize map centered on London
-    const map = L.map('map').setView([51.5074, -0.1276], 11);
+        // Add OpenStreetMap tiles (free, no API key needed)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
 
-    // Add OpenStreetMap tiles (free, no API key needed)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+        // Add markers for each player
+        players.forEach(player => {
+          // Get first character of player's name
+          const firstLetter = player.name.charAt(0).toUpperCase();
+          
+          // Create custom avatar icon with first letter
+          const icon = L.divIcon({
+            className: 'custom-marker',
+            html: `<div class="avatar-marker"><span style="color:white;font-size:22px;font-weight:600;">${firstLetter}</span></div>`,
+            iconSize: [44, 44],
+            iconAnchor: [22, 22]
+          });
 
-    // Add markers for each player
-    // Human icon SVG
-    const humanIcon = `<svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
+          // Create popup content
+          const popupContent = `
+            <div class="player-popup">
+              <div style="width:60px;height:60px;border-radius:50%;background:#4a90a4;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+                <svg viewBox="0 0 24 24" style="width:36px;height:36px;fill:white;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              </div>
+              <h3>${player.name}</h3>
+              <div class="court">📍 ${player.court}</div>
+              <div class="level level-${player.level}">${player.level}</div>
+              <div class="availability">🕐 ${player.availability}</div>
+              ${player.moreInfo ? `<div style="font-size:12px;color:#666;margin-bottom:8px;">🔊 ${player.moreInfo}</div>` : ''}
+              <a href="https://chat.whatsapp.com/EOhEeh7vnfTEDQoXY6Q3Cc" target="_blank" class="whatsapp-btn">
+                💬 WhatsApp
+              </a>
+            </div>
+          `;
 
-    players.forEach(player => {
-      // Get first character of player's name
-      const firstLetter = player.name.charAt(0).toUpperCase();
-      
-      // Create custom avatar icon with first letter
-      const icon = L.divIcon({
-        className: 'custom-marker',
-        html: `<div class="avatar-marker"><span style="color:white;font-size:22px;font-weight:600;">${firstLetter}</span></div>`,
-        iconSize: [44, 44],
-        iconAnchor: [22, 22]
-      });
-
-      // Create popup content
-      const popupContent = `
-        <div class="player-popup">
-          <div style="width:60px;height:60px;border-radius:50%;background:#4a90a4;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
-            <svg viewBox="0 0 24 24" style="width:36px;height:36px;fill:white;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-          </div>
-          <h3>${player.name}</h3>
-          <div class="court">📍 ${player.court}</div>
-          <div class="level level-${player.level}">${player.level}</div>
-          <div class="availability">🕐 ${player.availability}</div>
-          ${player.moreInfo ? `<div style="font-size:12px;color:#666;margin-bottom:8px;">🔊 ${player.moreInfo}</div>` : ''}
-          <a href="https://chat.whatsapp.com/EOhEeh7vnfTEDQoXY6Q3Cc" target="_blank" class="whatsapp-btn">
-            💬 WhatsApp
-          </a>
-        </div>
-      `;
-
-      // Add marker to map
-      L.marker(player.coords, { icon })
-        .addTo(map)
-        .bindPopup(popupContent);
-    });
+          // Add marker to map
+          L.marker(player.coords, { icon })
+            .addTo(map)
+            .bindPopup(popupContent);
+        });
+      })
+      .catch(error => console.error('Error loading players:', error));
   </script>
 </body>
 </html>
