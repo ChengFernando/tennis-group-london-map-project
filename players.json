@@ -68,5 +68,35 @@
     "level": "beginner",
     "availability": "",
     "moreInfo": "剛到倫敦三個多月，目前住在Ealing，還沒有機會在這打過球，之前在台灣學了8個月的網球，應該還算是很菜的新手，希望有機會可以學習、以及找到一起進步的球友"    
-  }
+  },
+  {
+    "id": "8",
+    "name": "Pinky",
+    "whatsapp": "000",
+    "court": "AELTC Raynes Park",
+    "coords": [51.3971824452666, -0.22756964787367337],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "住在Morden 球齡大概有14年 程度應該算是upper intermediate 平時在AELTC raynes park 的室內球場打 一週打一至兩次 期待未來一起練"    
+  },
+  {
+    "id": "9",
+    "name": "Roy",
+    "whatsapp": "000",
+    "court": "East London",
+    "coords": [51.53645568020966, -0.04147830484088613],
+    "level": "advanced",
+    "availability": "",
+    "moreInfo": "剛到英國一個多月，住在東倫敦。球齡目前10年，希望能一起和大家練球"    
+  },
+  {
+    "id": "10",
+    "name": "Lisa",
+    "whatsapp": "000",
+    "court": "Tufnell Park",
+    "coords": [51.55687788386647, -0.13810053077263756],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "今年四月斷斷續續用class pass上課學網球，主要在Tufnell Park這個地方，平常大概一週一次，希望可以更頻繁打球"    
+  }  
 ]
