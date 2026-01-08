@@ -708,6 +708,26 @@
     "level": "improver",
     "availability": "",
     "moreInfo": "水平improver，剛學了1年，平時只和教練打球，對自己水平毫無認知🤣 住nine elms區，希望能認識一些球友！"    
+  },
+  {
+    "id": "45",
+    "name": "Diana",
+    "whatsapp": "000",
+    "court": "Clerkenwell",
+    "coords": [51.52644955143809, -0.10803709275928904],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "Beginner. 住Clerkenwell"    
+  },
+  {
+    "id": "46",
+    "name": "Tiko",
+    "whatsapp": "000",
+    "court": "Hendon",
+    "coords": [51.58327002592027, -0.22689247171378688],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "在Hendon，剛開始學不久想找人一齊上教練/打 Beginner Level😂 還是菜鳥"    
   }
 
 ]
