@@ -117,11 +117,19 @@
         players.forEach(player => {
           // Get first character of player's name
           const firstLetter = player.name.charAt(0).toUpperCase();
+          // Get background color based on level
+          const levelColors = {
+            'advanced': '#f8b4b4',    // light red
+            'intermediate': '#fde68a', // light yellow
+            'improver': '#bfdbfe',     // light blue
+            'beginner': '#bbf7d0'      // light green
+          };
+          const bgColor = levelColors[player.level.toLowerCase()] || '#4a90a4';
           
           // Create custom avatar icon with first letter
           const icon = L.divIcon({
             className: 'custom-marker',
-            html: `<div class="avatar-marker"><span style="color:white;font-size:22px;font-weight:600;">${firstLetter}</span></div>`,
+            html: `<div class="avatar-marker" style="background:${bgColor}"><span style="color:#333;font-size:22px;font-weight:600;">${firstLetter}</span></div>`,
             iconSize: [44, 44],
             iconAnchor: [22, 22]
           });
