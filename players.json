@@ -1028,5 +1028,25 @@
     "level": "intermediate",
     "availability": "",
     "moreInfo": "目前住在north finchley , 多數在finchley 的victoria park 打球 希望可以找到一起練習的球友"
+  },
+  {
+    "id": "64",
+    "name": "Hortance",
+    "whatsapp": "000",
+    "court": "Stamfrod Hill",
+    "coords": [51.572293707812506, -0.08075546405195433],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "位置: Stamfrod Hill / 球齡/程度: beginner"
+  },
+  {
+    "id": "65",
+    "name": "Jace",
+    "whatsapp": "000",
+    "court": "Coventry",
+    "coords": [52.41236526969056, -1.511168240292118],
+    "level": "advanced",
+    "availability": "",
+    "moreInfo": "能底線對練打個小比賽 固定在Coventry/Birmingham 以及周圍的城市都可以約打球或是一起開車去 希望多認識中部的台灣人 幫忙拓展中部地圖"
   }
 ]
