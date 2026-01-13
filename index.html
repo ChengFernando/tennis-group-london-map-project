@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>大倫敦網球團 球員地圖 | Tennis Players Map</title>
+  <title>Tennis Players Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
@@ -19,15 +19,109 @@
       background: #4a90a4;
       color: white;
       text-align: center;
-      padding: 16px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-title {
       font-size: 24px;
       font-weight: 600;
       letter-spacing: 2px;
     }
+    .filter-container {
+      position: relative;
+      display: inline-block;
+    }
+    .add-filter-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      font-size: 14px;
+      cursor: pointer;
+      background: white;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+    .add-filter-btn:hover {
+      background: #f5f5f5;
+    }
+    .filter-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 8px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      min-width: 220px;
+      z-index: 1000;
+      overflow: hidden;
+    }
+    .filter-dropdown.open {
+      display: block;
+    }
+    .filter-category {
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #eee;
+      background: #fafafa;
+    }
+    .filter-option {
+      padding: 10px 16px;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.15s;
+    }
+    .filter-option:hover {
+      background: #f5f5f5;
+    }
+    .filter-option .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-advanced { background: #f8b4b4; }
+    .dot-intermediate { background: #fde68a; }
+    .dot-improver { background: #bfdbfe; }
+    .dot-beginner { background: #bbf7d0; }
+    .active-filter {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #e8f4f8;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #333;
+      margin-left: 8px;
+    }
+    .active-filter .remove-btn {
+      cursor: pointer;
+      font-size: 16px;
+      color: #666;
+      line-height: 1;
+    }
+    .active-filter .remove-btn:hover {
+      color: #333;
+    }
     #map {
-      height: calc(100vh - 60px);
+      height: calc(100vh - 70px);
       width: 100%;
-    }    
+    }
     .player-popup {
       text-align: center;
       min-width: 200px;
@@ -97,67 +191,162 @@
   </style>
 </head>
 <body>
-  <div class="header">大倫敦網球團 球員地圖</div>  
+  <div class="header">
+    <span class="header-title">大倫敦網球團 球員地圖</span>
+    <div class="filter-container">
+      <button class="add-filter-btn" id="addFilterBtn">
+        <span>+</span> Add Filter
+      </button>
+      <div class="filter-dropdown" id="filterDropdown">
+        <div class="filter-category">Level</div>
+        <div class="filter-option" data-level="advanced">
+          <span class="dot dot-advanced"></span> Advanced
+        </div>
+        <div class="filter-option" data-level="intermediate">
+          <span class="dot dot-intermediate"></span> Intermediate
+        </div>
+        <div class="filter-option" data-level="improver">
+          <span class="dot dot-improver"></span> Improver
+        </div>
+        <div class="filter-option" data-level="beginner">
+          <span class="dot dot-beginner"></span> Beginner
+        </div>
+      </div>
+      <div id="activeFilters"></div>
+    </div>
+  </div>
   <div id="map"></div>
 
   <script>
-    // Fetch player data from external JSON file
+    let allPlayers = [];
+    let markers = [];
+    let map;
+
+    // Initialize map
+    function initMap() {
+      map = L.map('map').setView([51.5074, -0.1276], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+    }
+
+    // Create marker for a player
+    function createMarker(player) {
+      const firstLetter = player.name.charAt(0).toUpperCase();
+      const levelColors = {
+        'advanced': '#f8b4b4',
+        'intermediate': '#fde68a',
+        'improver': '#bfdbfe',
+        'beginner': '#bbf7d0'
+      };
+      const bgColor = levelColors[player.level.toLowerCase()] || '#4a90a4';
+
+      const icon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div class="avatar-marker" style="background:${bgColor}"><span style="color:#333;font-size:22px;font-weight:600;">${firstLetter}</span></div>`,
+        iconSize: [44, 44],
+        iconAnchor: [22, 22]
+      });
+
+      const popupContent = `
+        <div class="player-popup">
+          <div style="width:60px;height:60px;border-radius:50%;background:#4a90a4;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+            <svg viewBox="0 0 24 24" style="width:36px;height:36px;fill:white;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <h3>${player.name}</h3>
+          <div class="court">📍 ${player.court}</div>
+          <div class="level level-${player.level}">${player.level}</div>
+          <div class="availability">🕐 ${player.availability}</div>
+          ${player.moreInfo ? `<div style="font-size:12px;color:#666;margin-bottom:8px;">🔊 ${player.moreInfo}</div>` : ''}
+          <a href="https://chat.whatsapp.com/EOhEeh7vnfTEDQoXY6Q3Cc" target="_blank" class="whatsapp-btn">
+            💬 WhatsApp
+          </a>
+        </div>
+      `;
+
+      return L.marker(player.coords, { icon }).bindPopup(popupContent);
+    }
+
+    // Clear all markers from map
+    function clearMarkers() {
+      markers.forEach(marker => map.removeLayer(marker));
+      markers = [];
+    }
+
+    // Display players based on filter
+    function displayPlayers(level) {
+      clearMarkers();
+      const filteredPlayers = level === 'all' 
+        ? allPlayers 
+        : allPlayers.filter(p => p.level.toLowerCase() === level);
+      
+      filteredPlayers.forEach(player => {
+        const marker = createMarker(player);
+        marker.addTo(map);
+        markers.push(marker);
+      });
+    }
+
+    // Initialize
+    initMap();
+
+    // Fetch player data
     fetch('players.json')
       .then(response => response.json())
       .then(players => {
-        // Initialize map centered on London
-        const map = L.map('map').setView([51.5074, -0.1276], 11);
-
-        // Add OpenStreetMap tiles (free, no API key needed)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Add markers for each player
-        players.forEach(player => {
-          // Get first character of player's name
-          const firstLetter = player.name.charAt(0).toUpperCase();
-          // Get background color based on level
-          const levelColors = {
-            'advanced': '#f8b4b4',    // light red
-            'intermediate': '#fde68a', // light yellow
-            'improver': '#bfdbfe',     // light blue
-            'beginner': '#bbf7d0'      // light green
-          };
-          const bgColor = levelColors[player.level.toLowerCase()] || '#4a90a4';
-          
-          // Create custom avatar icon with first letter
-          const icon = L.divIcon({
-            className: 'custom-marker',
-            html: `<div class="avatar-marker" style="background:${bgColor}"><span style="color:#333;font-size:22px;font-weight:600;">${firstLetter}</span></div>`,
-            iconSize: [44, 44],
-            iconAnchor: [22, 22]
-          });
-
-          // Create popup content
-          const popupContent = `
-            <div class="player-popup">
-              <div style="width:60px;height:60px;border-radius:50%;background:#4a90a4;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
-                <svg viewBox="0 0 24 24" style="width:36px;height:36px;fill:white;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <h3>${player.name}</h3>
-              <div class="court">📍 ${player.court}</div>
-              <div class="level level-${player.level}">${player.level}</div>
-              <div class="availability">🕐 ${player.availability}</div>
-              ${player.moreInfo ? `<div style="font-size:12px;color:#666;margin-bottom:8px;">🔊 ${player.moreInfo}</div>` : ''}
-              <a href="https://chat.whatsapp.com/EOhEeh7vnfTEDQoXY6Q3Cc" target="_blank" class="whatsapp-btn">
-                💬 WhatsApp
-              </a>
-            </div>
-          `;
-
-          // Add marker to map
-          L.marker(player.coords, { icon })
-            .addTo(map)
-            .bindPopup(popupContent);
-        });
+        allPlayers = players;
+        displayPlayers('all');
       })
       .catch(error => console.error('Error loading players:', error));
+
+    // Filter functionality
+    const addFilterBtn = document.getElementById('addFilterBtn');
+    const filterDropdown = document.getElementById('filterDropdown');
+    const activeFiltersContainer = document.getElementById('activeFilters');
+    let currentFilter = 'all';
+
+    // Toggle dropdown
+    addFilterBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      filterDropdown.classList.toggle('open');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+      filterDropdown.classList.remove('open');
+    });
+
+    filterDropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Handle filter option click
+    document.querySelectorAll('.filter-option').forEach(option => {
+      option.addEventListener('click', () => {
+        const level = option.dataset.level;
+        currentFilter = level;
+        displayPlayers(level);
+        filterDropdown.classList.remove('open');
+        
+        // Update active filter display
+        const levelName = option.textContent.trim();
+        const dotClass = `dot-${level}`;
+        activeFiltersContainer.innerHTML = `
+          <div class="active-filter">
+            <span class="dot ${dotClass}"></span>
+            ${levelName}
+            <span class="remove-btn" id="removeFilter">×</span>
+          </div>
+        `;
+        
+        // Add remove handler
+        document.getElementById('removeFilter').addEventListener('click', () => {
+          currentFilter = 'all';
+          displayPlayers('all');
+          activeFiltersContainer.innerHTML = '';
+        });
+      });
+    });
   </script>
 </body>
 </html>
