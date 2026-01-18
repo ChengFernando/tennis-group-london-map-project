@@ -1048,5 +1048,195 @@
     "level": "advanced",
     "availability": "",
     "moreInfo": "能底線對練打個小比賽 固定在Coventry/Birmingham 以及周圍的城市都可以約打球或是一起開車去 希望多認識中部的台灣人 幫忙拓展中部地圖"
+  },
+  {
+    "id": "66",
+    "name": "Claudia",
+    "whatsapp": "000",
+    "court": "David Lloyd Purley",
+    "coords": [51.35702456872521, -0.12246203735353658],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "住在Epsom 打球一般在David Lloyd Raynes Park or David Lloyd Cheam. 也可以偶然去David Lloyd Epsom or David Lloyd Purley"
+  },
+  {
+    "id": "66",
+    "name": "Claudia",
+    "whatsapp": "000",
+    "court": "David Lloyd Raynes Park",
+    "coords": [51.40602852752515, -0.22261350426298507],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "住在Epsom 打球一般在David Lloyd Raynes Park or David Lloyd Cheam. 也可以偶然去David Lloyd Epsom or David Lloyd Purley"
+  },
+  {
+    "id": "66",
+    "name": "Claudia",
+    "whatsapp": "000",
+    "court": "David Lloyd Cheam",
+    "coords": [51.3553181724156, -0.22505645639182256],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "住在Epsom 打球一般在David Lloyd Raynes Park or David Lloyd Cheam. 也可以偶然去David Lloyd Epsom or David Lloyd Purley"
+  },
+  {
+    "id": "66",
+    "name": "Claudia",
+    "whatsapp": "000",
+    "court": "David Lloyd Epsom",
+    "coords": [51.34537421849547, -0.2880394524451174],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "住在Epsom 打球一般在David Lloyd Raynes Park or David Lloyd Cheam. 也可以偶然去David Lloyd Epsom or David Lloyd Purley"
+  },
+  {
+    "id": "67",
+    "name": "Patrick",
+    "whatsapp": "000",
+    "court": "Selhurst",
+    "coords": [51.39838409750245, -0.08566577968057774],
+    "level": "advanced",
+    "availability": "",
+    "moreInfo": "在台灣常常參加2.5/3.0的比賽～"
+  },
+  {
+    "id": "68",
+    "name": "Wendy",
+    "whatsapp": "000",
+    "court": "Hendon",
+    "coords": [51.58248181745114, -0.22807185582422151],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "去年9月開始學網球，希望可以找到在Hendon附近的朋友一起打球"
+  },
+  {
+    "id": "69",
+    "name": "Tony",
+    "whatsapp": "000",
+    "court": "Canary Wharf",
+    "coords": [51.50646176507371, -0.02366905859347036],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "位置: Canary wharf, Stratford, Redbridge  / 球齡/程度: intermediate"
+  },
+  {
+    "id": "69",
+    "name": "Tony",
+    "whatsapp": "000",
+    "court": "Stratford",
+    "coords": [51.54025819965988, 0.0024157616201286765],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "位置: Canary wharf, Stratford, Redbridge  / 球齡/程度: intermediate"
+  },
+  {
+    "id": "69",
+    "name": "Tony",
+    "whatsapp": "000",
+    "court": "Redbridge",
+    "coords": [51.57591046965738, 0.047921450708968014],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "位置: Canary wharf, Stratford, Redbridge  / 球齡/程度: intermediate"
+  },
+  {
+    "id": "70",
+    "name": "Athena Liu",
+    "whatsapp": "000",
+    "court": "Regent’s Park",
+    "coords": [51.52567194730247, -0.1527490765341191],
+    "level": "improver",
+    "availability": "",
+    "moreInfo": "位置: Regents Park, Wood Green, Islington / 球齡/程度: improver"
+  },
+  {
+    "id": "70",
+    "name": "Athena Liu",
+    "whatsapp": "000",
+    "court": "Wood Green",
+    "coords": [51.597626877241076, -0.10954816691272469],
+    "level": "improver",
+    "availability": "",
+    "moreInfo": "位置: Regents Park, Wood Green, Islington / 球齡/程度: improver"
+  },
+  {
+    "id": "70",
+    "name": "Athena Liu",
+    "whatsapp": "000",
+    "court": "Islington",
+    "coords": [51.54295980841954, -0.11683289495397746],
+    "level": "improver",
+    "availability": "",
+    "moreInfo": "位置: Regents Park, Wood Green, Islington / 球齡/程度: improver"
+  },
+  {
+    "id": "71",
+    "name": "WeiLee",
+    "whatsapp": "000",
+    "court": "Leyton",
+    "coords": [51.55719169690086, -0.00655031257382537],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "目前只上過幾堂網球課而已 希望有機會能和大家一起打球"
+  },
+  {
+    "id": "72",
+    "name": "Stanley",
+    "whatsapp": "000",
+    "court": "Angel",
+    "coords": [51.53290555106348, -0.10654693207579893],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "位置: Angel/Kings Cross/Islinton Tennis Center / 球齡/程度: intermediate"
+  },
+  {
+    "id": "72",
+    "name": "Stanley",
+    "whatsapp": "000",
+    "court": "Kings Cross",
+    "coords": [51.5374578221734, -0.12464921415008758],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "位置: Angel/Kings Cross/Islinton Tennis Center / 球齡/程度: intermediate"
+  },
+  {
+    "id": "72",
+    "name": "Stanley",
+    "whatsapp": "000",
+    "court": "Islington Tennis Centre",
+    "coords": [51.54580982881995, -0.12270815342161212],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "位置: Angel/Kings Cross/Islinton Tennis Center / 球齡/程度: intermediate"
+  },
+  {
+    "id": "73",
+    "name": "Celesty Wang",
+    "whatsapp": "000",
+    "court": "Ealing",
+    "coords": [51.51320622295262, -0.3013680842627213],
+    "level": "improver",
+    "availability": "",
+    "moreInfo": "位置: Ealing / 球齡/程度: improver"
+  },
+  {
+    "id": "74",
+    "name": "碩庭",
+    "whatsapp": "000",
+    "court": "Wimbledon Park",
+    "coords": [51.43574480063507, -0.20270296008421496],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "住在溫布頓球場附近，希望可以找到平日或假日固定時段練球的朋友，屬於初階程度"
+  },
+  {
+    "id": "75",
+    "name": "Jenna",
+    "whatsapp": "000",
+    "court": "Wimbley",
+    "coords": [51.55137601880982, -0.295593412195609],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "位置: Ealing / 球齡/程度: beginner"
   }
 ]
