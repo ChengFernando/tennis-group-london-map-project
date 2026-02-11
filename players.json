@@ -183,22 +183,32 @@
     "id": "15",
     "name": "Janette",
     "whatsapp": "000",
-    "court": "Hendon",
-    "coords": [51.58269296276223, -0.22606088034943708],
-    "level": "beginner",
+    "court": "Hendon Park",
+    "coords": [51.58008580532993, -0.22029697563566744],
+    "level": "improver",
     "availability": "",
-    "moreInfo": "住在北倫敦 是beginner 主要在Finchley / Hendon 打 這夏天開始有跟教練 但因為冬天就停了🙈 希望冬天可以繼續學習一起打球"    
+    "moreInfo": "2025開始跟教練打，希望約到附近朋友一起打球! 住在北倫敦 Finchley, 場地：Finchley (Victoria Park), Hendon Park, Bittacy Hill Park"    
   },
   {
     "id": "15",
     "name": "Janette",
     "whatsapp": "000",
-    "court": "Finchley",
-    "coords": [51.59752099982699, -0.196977854519493],
-    "level": "beginner",
+    "court": "Victoria Park (Finchley)",
+    "coords": [51.602711778936325, -0.1843095394440778],
+    "level": "improver",
     "availability": "",
-    "moreInfo": "住在北倫敦 是beginner 主要在Finchley / Hendon 打 這夏天開始有跟教練 但因為冬天就停了🙈 希望冬天可以繼續學習一起打球"    
+    "moreInfo": "2025開始跟教練打 希望約到附近朋友一起打球! 住在北倫敦 Finchley, 場地：Finchley (Victoria Park), Hendon Park, Bittacy Hill Park"    
   },
+  {
+    "id": "15",
+    "name": "Janette",
+    "whatsapp": "000",
+    "court": "Bittacy Hill Park",
+    "coords": [51.61044209589709, -0.21591458429060165],
+    "level": "improver",
+    "availability": "",
+    "moreInfo": "2025開始跟教練打 希望約到附近朋友一起打球! 住在北倫敦 Finchley, 場地：Finchley (Victoria Park), Hendon Park, Bittacy Hill Park"    
+  },  
   {
     "id": "16",
     "name": "Jeffrey",
@@ -1518,5 +1528,105 @@
     "level": "beginner",
     "availability": "",
     "moreInfo": "我係Anna, 95後, 來了英國4年, 現在在倫敦工作, 去年五月開始上網球班"
-  }
+  },
+  {
+    "id": "96",
+    "name": "Justin",
+    "whatsapp": "000",
+    "court": "Spelthorne Community Tennis Centre",
+    "coords": [51.427120413914054, -0.47727915580306096],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "你好! Beginner level, 住Surrey。不時會到 Spelthorne Community Tennis Centre, Lammas park, Gunnersbury park 打球。歡迎一起練習及對打"
+  },
+  {
+    "id": "96",
+    "name": "Justin",
+    "whatsapp": "000",
+    "court": "Lammas Park",
+    "coords": [51.50336331144902, -0.312093440677369],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "你好! Beginner level, 住Surrey。不時會到 Spelthorne Community Tennis Centre, Lammas park, Gunnersbury park 打球。歡迎一起練習及對打"
+  },
+  {
+    "id": "96",
+    "name": "Justin",
+    "whatsapp": "000",
+    "court": "Gunnersbury Park",
+    "coords": [51.498110643510216, -0.29482911386140975],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "你好! Beginner level, 住Surrey。不時會到 Spelthorne Community Tennis Centre, Lammas park, Gunnersbury park 打球。歡迎一起練習及對打"
+  },
+  {
+    "id": "97",
+    "name": "Jerry Wu",
+    "whatsapp": "000",
+    "court": "East Finchley",
+    "coords": [51.58681185198086, -0.1618603708227901],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "目前住在北倫敦，希望找到波友，平日晚上或周末都可以🙂"
+  },
+  {
+    "id": "98",
+    "name": "SC",
+    "whatsapp": "000",
+    "court": "Lammas Park",
+    "coords": [51.504164708137296, -0.3103124539997859],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "我是Stella，大學時代打得比較多，中間停了一段長時間，三年前開始跟教練練波。平時都喺 Ealing 及 Acton 嘅球場打；如果時間許可，唔介意去其他球場。"
+  },
+  {
+    "id": "98",
+    "name": "SC",
+    "whatsapp": "000",
+    "court": "Gunnersbury Park",
+    "coords": [51.49768849533294, -0.29499369954759685],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "我是Stella，大學時代打得比較多，中間停了一段長時間，三年前開始跟教練練波。平時都喺 Ealing 及 Acton 嘅球場打；如果時間許可，唔介意去其他球場。"
+  },
+  {
+    "id": "98",
+    "name": "SC",
+    "whatsapp": "000",
+    "court": "Bentham Club",
+    "coords": [51.52881974781236, -0.30927855014794176],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "我是Stella，大學時代打得比較多，中間停了一段長時間，三年前開始跟教練練波。平時都喺 Ealing 及 Acton 嘅球場打；如果時間許可，唔介意去其他球場。"
+  },
+  {
+    "id": "99",
+    "name": "Yen",
+    "whatsapp": "000",
+    "court": "St John's Park",
+    "coords": [51.49661585265997, -0.009719169341731322],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "2025/9月開始學網球，主要在 Canary Wharf，歡迎約練球！"
+  },
+  {
+    "id": "100",
+    "name": "Kasey",
+    "whatsapp": "000",
+    "court": "Stradford Park",
+    "coords": [51.53687886014185, 0.00456181650505399],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "Hello，我是Kasey。來到英國才接觸網球，打了大約幾個月。還是新手，有興趣可約球一齊練習。我多在Stratford附近打球，但其他地方都沒問題。"
+  },
+  {
+    "id": "108",
+    "name": "Kasey",
+    "whatsapp": "000",
+    "court": "West Ham Park",
+    "coords": [51.53725448505961, 0.021623872601968804],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "Hello，我是Kasey。來到英國才接觸網球，打了大約幾個月。還是新手，有興趣可約球一齊練習。我多在Stratford附近打球，但其他地方都沒問題。"
+  }  
 ]
