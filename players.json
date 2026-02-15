@@ -1630,7 +1630,7 @@
     "moreInfo": "Hello，我是Kasey。來到英國才接觸網球，打了大約幾個月。還是新手，有興趣可約球一齊練習。我多在Stratford附近打球，但其他地方都沒問題。"
   },
   {
-    "id": "108",
+    "id": "100",
     "name": "Kasey",
     "whatsapp": "000",
     "court": "West Ham Park",
@@ -1638,5 +1638,15 @@
     "level": "beginner",
     "availability": "",
     "moreInfo": "Hello，我是Kasey。來到英國才接觸網球，打了大約幾個月。還是新手，有興趣可約球一齊練習。我多在Stratford附近打球，但其他地方都沒問題。"
+  },
+  {
+    "id": "101",
+    "name": "Ed",
+    "whatsapp": "000",
+    "court": "Canada Water",
+    "coords": [51.497649865616296, -0.047562390521657616],
+    "level": "improver",
+    "availability": "",
+    "moreInfo": "大家好，我平均一個禮拜會打一次網球，當做運動放鬆下之餘，都想慢慢進步。  希望可以提升自己嘅技術，同時識多啲一樣鍾意打網球嘅朋友，一齊約波、交流下 ：）"
   }  
 ]
