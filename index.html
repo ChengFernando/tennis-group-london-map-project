@@ -118,8 +118,11 @@
     .active-filter .remove-btn:hover {
       color: #333;
     }
+    html, body {
+      height: 100%;
+    }
     #map {
-      height: calc(100vh - 70px);
+      flex: 1;
       width: 100%;
     }
     .player-popup {
@@ -190,12 +193,12 @@
     }
   </style>
 </head>
-<body>
+<body style="display:flex;flex-direction:column;height:100vh;">
   <div class="header">
     <span class="header-title">大倫敦網球團 球員地圖</span>
     <div class="filter-container">
       <button class="add-filter-btn" id="addFilterBtn">
-        <span>+</span> Find Players
+        <span>+</span> Add Filter
       </button>
       <div class="filter-dropdown" id="filterDropdown">
         <div class="filter-category">Level</div>
@@ -289,6 +292,8 @@
 
     // Initialize
     initMap();
+    // Ensure map size is correct after layout
+    setTimeout(() => map.invalidateSize(), 100);
 
     // Fetch player data
     fetch('players.json')
