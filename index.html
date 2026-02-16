@@ -34,6 +34,33 @@
       position: relative;
       display: inline-block;
     }
+    .search-form {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .search-input {
+      min-width: 220px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #d0d0d0;
+      font-size: 14px;
+    }
+    .search-btn {
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      font-size: 14px;
+      cursor: pointer;
+      background: white;
+      color: #333;
+      font-weight: 500;
+    }
+    .search-btn:hover {
+      background: #f5f5f5;
+    }
     .add-filter-btn {
       padding: 8px 16px;
       border-radius: 6px;
@@ -196,6 +223,16 @@
 <body style="display:flex;flex-direction:column;height:100vh;">
   <div class="header">
     <span class="header-title">大倫敦網球團 球員地圖</span>
+    <form class="search-form" id="nameSearchForm">
+      <input
+        type="text"
+        id="nameSearchInput"
+        class="search-input"
+        value="Type Name Here"
+        aria-label="Search players by name"
+      />
+      <button type="submit" class="search-btn">Enter</button>
+    </form>
     <div class="filter-container">
       <button class="add-filter-btn" id="addFilterBtn">
         <span>+</span> Add Filter
@@ -224,6 +261,8 @@
     let allPlayers = [];
     let markers = [];
     let map;
+    let currentFilter = 'all';
+    let currentNameSearch = '';
 
     // Keep Leaflet marker positions accurate after any layout change
     function refreshMapLayout() {
@@ -284,11 +323,14 @@
     }
 
     // Display players based on filter
-    function displayPlayers(level) {
+    function displayPlayers() {
       clearMarkers();
-      const filteredPlayers = level === 'all' 
-        ? allPlayers 
-        : allPlayers.filter(p => p.level.toLowerCase() === level);
+      const normalizedNameSearch = currentNameSearch.toLowerCase();
+      const filteredPlayers = allPlayers.filter(player => {
+        const matchesLevel = currentFilter === 'all' || player.level.toLowerCase() === currentFilter;
+        const matchesName = normalizedNameSearch === '' || player.name.toLowerCase().includes(normalizedNameSearch);
+        return matchesLevel && matchesName;
+      });
       
       filteredPlayers.forEach(player => {
         const marker = createMarker(player);
@@ -307,7 +349,7 @@
       .then(response => response.json())
       .then(players => {
         allPlayers = players;
-        displayPlayers('all');
+        displayPlayers();
       })
       .catch(error => console.error('Error loading players:', error));
 
@@ -315,7 +357,28 @@
     const addFilterBtn = document.getElementById('addFilterBtn');
     const filterDropdown = document.getElementById('filterDropdown');
     const activeFiltersContainer = document.getElementById('activeFilters');
-    let currentFilter = 'all';
+    const nameSearchForm = document.getElementById('nameSearchForm');
+    const nameSearchInput = document.getElementById('nameSearchInput');
+    const defaultNameSearchText = 'Type Name Here';
+
+    nameSearchInput.addEventListener('focus', () => {
+      if (nameSearchInput.value === defaultNameSearchText) {
+        nameSearchInput.value = '';
+      }
+    });
+
+    nameSearchInput.addEventListener('blur', () => {
+      if (nameSearchInput.value.trim() === '') {
+        nameSearchInput.value = defaultNameSearchText;
+      }
+    });
+
+    nameSearchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const normalizedInput = nameSearchInput.value.trim();
+      currentNameSearch = normalizedInput === defaultNameSearchText ? '' : normalizedInput;
+      displayPlayers();
+    });
 
     // Toggle dropdown
     addFilterBtn.addEventListener('click', (e) => {
@@ -339,7 +402,7 @@
       option.addEventListener('click', () => {
         const level = option.dataset.level;
         currentFilter = level;
-        displayPlayers(level);
+        displayPlayers();
         filterDropdown.classList.remove('open');
         
         // Update active filter display
@@ -357,7 +420,7 @@
         // Add remove handler
         document.getElementById('removeFilter').addEventListener('click', () => {
           currentFilter = 'all';
-          displayPlayers('all');
+          displayPlayers();
           activeFiltersContainer.innerHTML = '';
           refreshMapLayout();
         });
