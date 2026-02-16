@@ -225,6 +225,13 @@
     let markers = [];
     let map;
 
+    // Keep Leaflet marker positions accurate after any layout change
+    function refreshMapLayout() {
+      requestAnimationFrame(() => {
+        map.invalidateSize({ pan: false });
+      });
+    }
+
     // Initialize map
     function initMap() {
       map = L.map('map').setView([51.5074, -0.1276], 11);
@@ -293,7 +300,7 @@
     // Initialize
     initMap();
     // Ensure map size is correct after layout
-    setTimeout(() => map.invalidateSize(), 100);
+    setTimeout(() => refreshMapLayout(), 100);
 
     // Fetch player data
     fetch('players.json')
@@ -314,11 +321,13 @@
     addFilterBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       filterDropdown.classList.toggle('open');
+      refreshMapLayout();
     });
 
     // Close dropdown when clicking outside
     document.addEventListener('click', () => {
       filterDropdown.classList.remove('open');
+      refreshMapLayout();
     });
 
     filterDropdown.addEventListener('click', (e) => {
@@ -343,12 +352,14 @@
             <span class="remove-btn" id="removeFilter">×</span>
           </div>
         `;
+        refreshMapLayout();
         
         // Add remove handler
         document.getElementById('removeFilter').addEventListener('click', () => {
           currentFilter = 'all';
           displayPlayers('all');
           activeFiltersContainer.innerHTML = '';
+          refreshMapLayout();
         });
       });
     });
