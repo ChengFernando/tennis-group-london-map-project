@@ -228,7 +228,7 @@
         type="text"
         id="nameSearchInput"
         class="search-input"
-        value="Type Name Here"
+        value="Search Players Here"
         aria-label="Search players by name"
       />
       <button type="submit" class="search-btn">Enter</button>
@@ -359,7 +359,7 @@
     const activeFiltersContainer = document.getElementById('activeFilters');
     const nameSearchForm = document.getElementById('nameSearchForm');
     const nameSearchInput = document.getElementById('nameSearchInput');
-    const defaultNameSearchText = 'Type Name Here';
+    const defaultNameSearchText = 'Search Players Here';
 
     nameSearchInput.addEventListener('focus', () => {
       if (nameSearchInput.value === defaultNameSearchText) {
