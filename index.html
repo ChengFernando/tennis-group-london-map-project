@@ -231,7 +231,7 @@
         value="Search Players Here"
         aria-label="Search players by name"
       />
-      <button type="submit" class="search-btn">Enter</button>
+      <button type="submit" class="search-btn" id="nameSearchBtn">Enter</button>
     </form>
     <div class="filter-container">
       <button class="add-filter-btn" id="addFilterBtn">
@@ -359,7 +359,23 @@
     const activeFiltersContainer = document.getElementById('activeFilters');
     const nameSearchForm = document.getElementById('nameSearchForm');
     const nameSearchInput = document.getElementById('nameSearchInput');
+    const nameSearchBtn = document.getElementById('nameSearchBtn');
     const defaultNameSearchText = 'Search Players Here';
+
+    function updateNameSearchButtonCta() {
+      const hasNameFilter = currentNameSearch.trim() !== '';
+      nameSearchBtn.textContent = hasNameFilter ? 'Clear' : 'Enter';
+    }
+
+    function clearAllFilters() {
+      currentNameSearch = '';
+      currentFilter = 'all';
+      nameSearchInput.value = defaultNameSearchText;
+      activeFiltersContainer.innerHTML = '';
+      displayPlayers();
+      updateNameSearchButtonCta();
+      refreshMapLayout();
+    }
 
     nameSearchInput.addEventListener('focus', () => {
       if (nameSearchInput.value === defaultNameSearchText) {
@@ -373,11 +389,20 @@
       }
     });
 
-    nameSearchForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+    nameSearchInput.addEventListener('input', () => {
       const normalizedInput = nameSearchInput.value.trim();
       currentNameSearch = normalizedInput === defaultNameSearchText ? '' : normalizedInput;
       displayPlayers();
+      updateNameSearchButtonCta();
+    });
+
+    updateNameSearchButtonCta();
+
+    nameSearchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (currentNameSearch.trim() !== '') {
+        clearAllFilters();
+      }
     });
 
     // Toggle dropdown
@@ -422,6 +447,7 @@
           currentFilter = 'all';
           displayPlayers();
           activeFiltersContainer.innerHTML = '';
+          updateNameSearchButtonCta();
           refreshMapLayout();
         });
       });
