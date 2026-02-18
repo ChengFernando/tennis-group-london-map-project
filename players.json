@@ -1788,5 +1788,36 @@
     "level": "improver",
     "availability": "",
     "moreInfo": "剛來到倫敦，想繼續打網球，也想去看比賽感受一下氣氛"
+  },
+  {
+    "id": "104",
+    "name": "Zelda",
+    "whatsapp": "000",
+    "court": "Stratford",
+    "coords": [51.54198886278225, 0.00021341662070957466],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "位置: Stratford 球齡/程度: beginner"
+  },
+  {
+    "id": "105",
+    "name": "Chloe Wu",
+    "whatsapp": "000",
+    "court": "HA7 (North West London)",
+    "coords": [51.61922416228244, -0.3042108520752929],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "有參加過group class,私人教練的class。Barnet, Canons Park附近都有很多球場"
+  },
+  {
+    "id": "105",
+    "name": "Chloe Wu",
+    "whatsapp": "000",
+    "court": "Canons Park",
+    "coords": [51.6077069216886, -0.29722605187098877],
+    "level": "beginner",
+    "availability": "",
+    "moreInfo": "有參加過group class,私人教練的class。Barnet, Canons Park附近都有很多球場"
   }
+  
 ]
