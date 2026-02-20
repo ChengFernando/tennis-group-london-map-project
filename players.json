@@ -1818,6 +1818,15 @@
     "level": "beginner",
     "availability": "",
     "moreInfo": "有參加過group class,私人教練的class。Barnet, Canons Park附近都有很多球場"
+  },
+  {
+    "id": "106",
+    "name": "Cynthia",
+    "whatsapp": "000",
+    "court": "Battersea",
+    "coords": [51.4758183122903, -0.16222402703124444],
+    "level": "improver",
+    "availability": "",
+    "moreInfo": "位置: Battersea 球齡/程度: improver"
   }
-  
 ]
