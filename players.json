@@ -1848,5 +1848,25 @@
     "level": "intermediate",
     "availability": "",
     "moreInfo": "I live in south ruislip. a dedicated tennis player"
-  }    
+  },
+  {
+    "id": "108",
+    "name": "Bryan",
+    "whatsapp": "000",
+    "court": "Leeds",
+    "coords": [53.800366722032514, -1.5456799182682328],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "Hi everyone, I’m Bryan. I mostly play in the Leeds/Manchester area, though I travel to London for tennis from time to time. If you’re ever heading north and fancy a game, I’m always up for hitting together."
+  },
+  {
+    "id": "108",
+    "name": "Bryan",
+    "whatsapp": "000",
+    "court": "Manchester",
+    "coords": [53.476106586326075, -2.2342958482990816],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "Hi everyone, I’m Bryan. I mostly play in the Leeds/Manchester area, though I travel to London for tennis from time to time. If you’re ever heading north and fancy a game, I’m always up for hitting together."
+  }  
 ]
