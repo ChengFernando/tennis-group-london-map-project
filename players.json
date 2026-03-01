@@ -1888,5 +1888,15 @@
     "level": "improver",
     "availability": "",
     "moreInfo": "打了大約一年，程度:improver"
-  }
+  },
+  {
+    "id": "110",
+    "name": "Brian",
+    "whatsapp": "000",
+    "court": "Wimbledon",
+    "coords": [51.43492583098621, -0.20012908280746458],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "Hey 我是Brian，大學時期有加入校隊（不過我覺得我屬於後段班），之後斷斷續續有打球，目前大概5年以上沒有打，所以也不知道自己程度在哪… 希望可以跟大家交流！"
+  }  
 ]
