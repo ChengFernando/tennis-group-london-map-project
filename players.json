@@ -2028,5 +2028,45 @@
     "level": "intermediate",
     "availability": "",
     "moreInfo": "我住東倫敦（Aldersbrook). 有得打波好樂意去其他地方，希望可以在倫敦認識更多波友！"
+  },
+  {
+    "id": "117",
+    "name": "Alex T",
+    "whatsapp": "000",
+    "court": "Bromley",
+    "coords": [51.40618893271002, 0.0196301929396844],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "小時候有練過網球一陣子，現在主要是打身體健康的"
+  },
+  {
+    "id": "117",
+    "name": "Alex T",
+    "whatsapp": "000",
+    "court": "Crystal Palace",
+    "coords": [51.41907272209217, -0.07782328079217946],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "小時候有練過網球一陣子，現在主要是打身體健康的"
+  },
+  {
+    "id": "117",
+    "name": "Alex T",
+    "whatsapp": "000",
+    "court": "Greenwich",
+    "coords": [51.47965016344104, -0.005497779190765111],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "小時候有練過網球一陣子，現在主要是打身體健康的"
+  },
+  {
+    "id": "118",
+    "name": "Anson Ho",
+    "whatsapp": "000",
+    "court": "Islington Indoor Tennis Centre",
+    "coords": [51.545166169190566, -0.12472252704502208],
+    "level": "advanced",
+    "availability": "",
+    "moreInfo": ""
   }  
 ]
