@@ -2068,5 +2068,25 @@
     "level": "advanced",
     "availability": "",
     "moreInfo": ""
-  }  
+  },
+  {
+    "id": "119",
+    "name": "Gordon",
+    "whatsapp": "000",
+    "court": "Wimbledon",
+    "coords": [51.41666914036899, -0.2110715986142568],
+    "level": "improver",
+    "availability": "",
+    "moreInfo": "Improver, 長期招球友! "
+  },
+  {
+    "id": "120",
+    "name": "Kowei",
+    "whatsapp": "000",
+    "court": "E16",
+    "coords": [51.51016230777656, 0.018055925633038348],
+    "level": "intermediate",
+    "availability": "",
+    "moreInfo": "嗨大家好，剛搬回倫敦，最近愛上網球！希望能跟倫敦朋友們一起打球切磋，還有機會的話一起看溫布頓！"
+  }   
 ]
